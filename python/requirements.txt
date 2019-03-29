@@ -1,0 +1,8 @@
+watchdog
+pytest
+google
+grpcio
+grpcio-tools
+pandas
+numpy
+face_recognition

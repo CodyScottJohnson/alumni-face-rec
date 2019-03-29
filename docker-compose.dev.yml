@@ -1,0 +1,26 @@
+version: '2'
+services:
+  face-rec:
+    image: alumni-face-rec_python:latest
+    volumes:
+      - ./python/:/code
+    ports:
+      - 50051:50051
+    entrypoint: watchmedo auto-restart --recursive --pattern="*.py" --directory="." python face-rec/grpc/server.py
+    depends_on:
+      - postgres
+    links:
+      - postgres
+    environment:
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=myproject
+      - POSTGRES_HOST=postgres
+  postgres:
+    image: postgres:9.6
+    environment:
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=myproject
+    volumes:
+      - ./data/postgres:/var/lib/postgresql/data

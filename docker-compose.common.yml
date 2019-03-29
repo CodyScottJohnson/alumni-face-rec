@@ -1,0 +1,10 @@
+version: '2'
+
+services:
+  face-rec:
+    build: ./python
+    environment:
+      - POSTGRES_USER
+      - POSTGRES_PASSWORD
+      - POSTGRES_DB
+      - POSTGRES_HOST
