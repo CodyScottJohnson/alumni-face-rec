@@ -7,7 +7,7 @@ import pandas as pd
 import numpy
 
 def create_encoding_db():
-    people_frame = pd.read_csv("face-rec/users.csv")
+    people_frame = pd.read_csv("/code/face-rec/users.csv")
     known_face_encodings = []
     for index,person in people_frame.iterrows():
         image = base64.b64decode(person["profile_photo"])
